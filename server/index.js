@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var clientPath = path.join(__dirname, '../client');
 var api = require('./api');
 var cookieParser = require('cookie-parser');
-var prerender = ('prerender-node');
+var prerender = require('prerender-node');
 var configurePassport = require('./config/passport');
 var routing = require('./middleware/routing.mw');
 
