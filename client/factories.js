@@ -11,4 +11,7 @@ angular.module('blog.factories', [])
 }])
 .factory('Category', ['$resource', function($resource) {
     return $resource('/api/categories/:id');
-}]);
+}])
+.factory('Donation', ['$resource', function($resource) {
+    return $resource('/api/donations/:id');
+}])

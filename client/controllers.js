@@ -42,4 +42,37 @@ angular.module('blog.controllers', [])
             $location.replace().path('/' + $routeParams.id);
         })
     }
+}])
+.controller('DonationController', ['$scope', 'Donation', function($scope, Donation) {
+    var elements = stripe.elements();
+    var card = elements.create('card');
+    card.mount('#card-field');
+
+    $scope.errorMessage = '';
+
+    $scope.processDonation = function() {
+        stripe.createToken(card, {
+            name: $scope.name,
+            address_line1: $scope.line1,
+            address_line2: $scope.line2,
+            address_city: $scope.city,
+            address_state: $scope.state
+        }).then(function(result) {
+            if (result.error) {
+                $scope.errorMessage = result.error.message;
+            } else {
+                // result.token is the card token
+                var d = new Donation({
+                    token: result.token.id,
+                    amount: $scope.amount
+                });
+                d.$save(function() {
+                    alert('Thank you for the donation!');
+                    $location.path('/');
+                }, function(err) {
+                    console.log(err);
+                });
+            }
+        });
+    }
 }]);

@@ -1,9 +1,12 @@
-<a href="/compose">Write a new post</a>
-<div class="post-container">
-    <div class="post" ng-repeat="p in posts">
+<div class="page-header row">
+  <h1 class="col-md-11">My Blog</h1>
+  <a class="btn btn-info col-md-1" href="/compose" role="button">Compose</a>
+</div>
+<div class="clear list-group">
+    <div class="list-group-item" ng-repeat="p in posts">
         <h3>{{ p.title }}</h3>
         <h5>Written by: {{ p.authorfirstname }} {{ p.authorlastname }}</h5>
         <h5>{{ p.createdAt | date: 'short' }}</h5>
-        <p><a ng-href="/{{ p.id }}">Read More</a></p>
+        <p><a class="btn btn-default" role="button" ng-href="/{{ p.id }}">Read More</a></p>
     </div>
 </div>

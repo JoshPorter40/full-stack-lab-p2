@@ -10,6 +10,10 @@ angular.module('blog', ['ngRoute', 'ngResource', 'blog.controllers', 'blog.facto
         templateUrl: 'views/compose.html',
         controller: 'ComposePostController'
     })
+    .when('/donate', {
+        templateUrl: 'views/donate.html',
+        controller: 'DonationController'
+    })
     .when('/:id/update', {
         templateUrl: 'views/update.html',
         controller: 'UpdatePostController'
